@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>iPAS 科目2 弱點分析與讀書順序</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#EDF1F4; --surface:#FFFFFF; --ink:#18263A; --muted:#5A6A7D; --rule:#D3DBE3;
+  --mark:#FFE15A; --navy:#264A7A; --navy-soft:#E3EAF4;
+  --trap:#A8322A; --trap-bg:#FBEDEB; --ok:#2F6B4F; --ok-bg:#E4F1EA;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#10161D; --surface:#18212B; --ink:#E4EAF0; --muted:#97A6B6; --rule:#2B3743;
+    --mark:#6A5B12; --navy:#9DBBE6; --navy-soft:#1F2C3B;
+    --trap:#F2998F; --trap-bg:#2E1E1C; --ok:#86CBA6; --ok-bg:#1A2C23;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#10161D; --surface:#18212B; --ink:#E4EAF0; --muted:#97A6B6; --rule:#2B3743;
+  --mark:#6A5B12; --navy:#9DBBE6; --navy-soft:#1F2C3B;
+  --trap:#F2998F; --trap-bg:#2E1E1C; --ok:#86CBA6; --ok-bg:#1A2C23;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+header.hero{padding:24px 0 20px}
+.back{display:inline-block;margin:0 14px 18px 0;font-size:14px;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--rule)}
+.back:hover{border-color:var(--navy)}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6.5vw,42px);line-height:1.25;margin:0 0 14px;letter-spacing:.02em}
+.verdict{margin:0;padding:14px 16px;background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--trap);border-radius:0 10px 10px 0}
+.verdict b{background:linear-gradient(transparent 55%,var(--mark) 55%)}
+
+nav.chips{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--rule)}
+nav.chips .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav.chips .wrap::-webkit-scrollbar{display:none}
+nav.chips a{flex:none;font-size:13px;color:var(--navy);background:var(--navy-soft);text-decoration:none;padding:3px 10px;border-radius:999px;white-space:nowrap}
+
+section{padding:30px 0 6px}
+h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.3;margin:0 0 6px}
+.lead{margin:0 0 16px;color:var(--muted)}
+h3{font-size:15px;font-weight:700;color:var(--muted);margin:20px 0 8px}
+
+/* Error type bars */
+.bars{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:6px 16px}
+.bar-row{padding:12px 0;border-bottom:1px solid var(--rule)}
+.bar-row:last-child{border-bottom:0}
+.bar-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.bar-head strong{font-size:16px}
+.bar-head span{font-size:14px;color:var(--muted);white-space:nowrap}
+.bar-track{height:10px;background:var(--bg);border-radius:5px;margin:8px 0 6px;overflow:hidden}
+.bar-fill{height:100%;background:var(--navy);border-radius:5px}
+.bar-row.top .bar-fill{background:var(--trap)}
+.bar-note{font-size:14px;color:var(--muted);margin:0}
+.bar-ids{font-size:12px;color:var(--muted);margin:2px 0 0}
+.callout{margin:14px 0 0;padding:10px 14px;border-left:4px solid var(--navy);background:var(--navy-soft);border-radius:0 8px 8px 0;font-size:15px}
+
+/* Repeat-error cards */
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.card .t{font-weight:700;margin:0;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.card .t span{font-size:12px;font-weight:500;color:var(--trap);background:var(--trap-bg);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.card .q{margin:6px 0 10px;font-size:14px;color:var(--muted)}
+.rulebox{margin:0}
+.rulebox span{background:linear-gradient(transparent 52%,var(--mark) 52%);padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.reveal{font:inherit;font-size:14px;color:var(--navy);background:transparent;border:1px dashed var(--navy);border-radius:6px;padding:6px 12px;cursor:pointer;min-height:36px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;padding:6px 12px;cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--surface);font-weight:700}
+
+/* Blind spots */
+.list{margin:0;padding-left:1.4em}
+.list li{margin-bottom:8px}
+.list b{color:var(--ink)}
+
+/* Study plan */
+.stage{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin-bottom:10px;transition:opacity .2s}
+.stage.dim{opacity:.35}
+.stage h3{margin:0 0 2px;color:var(--ink);font-size:17px}
+.stage .why{margin:0 0 10px;font-size:14px;color:var(--muted)}
+.task{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--rule);cursor:pointer}
+.task input{margin-top:6px;width:18px;height:18px;accent-color:var(--ok);flex:none}
+.task.done .tx{text-decoration:line-through;color:var(--muted)}
+.tx small{display:block;color:var(--muted);font-size:13px}
+.prog{font-size:13px;color:var(--muted);margin:0 0 12px}
+.go{display:inline-block;margin-top:6px;font-size:14px;color:var(--navy)}
+
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{background:var(--navy-soft);font-weight:700;font-size:14px}
+tr:last-child td{border-bottom:0}
+.tbl{overflow-x:auto}
+
+footer{padding:32px 0 48px;font-size:13px;color:var(--muted)}
+button:focus-visible,input:focus-visible,a:focus-visible,label:focus-within{outline:2px solid var(--navy);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back" href="./">回到自學筆記整理</a><a class="back" href="iPAS-S2_Brief_20261107_v1.html">科目2 常錯速讀</a>
+    <h1>科目2 弱點分析與讀書順序</h1>
+    <p class="verdict">弱點不在知識量，而在<b>情境對應工具</b>：28 題中 13 題是選錯工具。其中 4 個觀念重複錯 2 次以上，最優先處理。</p>
+  </div>
+</header>
+
+<nav class="chips" aria-label="章節"><div class="wrap">
+  <a href="#types">錯誤類型</a>
+  <a href="#repeat">重複錯誤</a>
+  <a href="#blind">盲點提醒</a>
+  <a href="#plan">讀書順序</a>
+  <a href="#next">下一步</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="types">
+  <h2>錯誤類型分析</h2>
+  <p class="lead">28 題 = 科目2 的 25 題，加上原標科目1、實際考 RAG 的第 11、78、79 題。</p>
+  <div class="bars" id="bars"></div>
+  <p class="callout">工具選擇類占 46%。這類題只要掌握一條判斷規則，就能同時解多題，投入報酬最高。</p>
+</section>
+
+<section id="repeat">
+  <h2>重複錯誤：最高風險</h2>
+  <p class="lead">同一觀念錯 2 次以上，代表上次訂正後沒有內化。先遮住規則，口頭說出來再翻開對照。</p>
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="顯示方式">
+      <button type="button" data-rmode="quiz" aria-pressed="true">自測</button>
+      <button type="button" data-rmode="show" aria-pressed="false">全部顯示</button>
+    </div>
+  </div>
+  <div id="repeatList"></div>
+</section>
+
+<section id="blind">
+  <h2>盲點提醒</h2>
+  <ol class="list">
+    <li><b>錯題率無法計算。</b>目前只有錯題清單，沒有各主題總練習題數。零錯題的主題可能已掌握，也可能根本沒練到。</li>
+    <li><b>考綱覆蓋缺口。</b>錯題沒出現的主題（例如生成式 AI 導入評估、成本效益、AI 專案規劃流程），無法從這份資料判斷熟練度。</li>
+    <li><b>假設：</b>錯題分布反映真實弱點。若部分題目是粗心錯（看錯選項），優先順序會偏移。</li>
+  </ol>
+</section>
+
+<section id="plan">
+  <h2>考前讀書順序</h2>
+  <p class="lead">先選可用時間，不在範圍內的階段會淡化。完成的項目打勾，紀錄只存在這台裝置。</p>
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="可用時間">
+      <button type="button" data-time="30" aria-pressed="false">30 分鐘</button>
+      <button type="button" data-time="120" aria-pressed="false">2 小時</button>
+      <button type="button" data-time="all" aria-pressed="true">1 天以上</button>
+    </div>
+  </div>
+  <p class="prog" id="prog"></p>
+  <div id="stages"></div>
+  <a class="go" href="iPAS-S2_Brief_20261107_v1.html">到科目2 常錯速讀，用「自測」模式練習</a>
+
+  <h3>時間不足時的取捨</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>可用時間</th><th>只做這些</th></tr></thead>
+    <tbody>
+      <tr><td>30 分鐘</td><td>重複錯誤的四條判斷規則＋科目2 專頁的四種陷阱</td></tr>
+      <tr><td>2 小時</td><td>階段一至三，用科目2 專頁「自測」模式</td></tr>
+      <tr><td>1 天以上</td><td>全部階段；第二輪改用「未熟」篩選複習</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="next">
+  <h2>資訊缺口與下一步</h2>
+  <ol class="list">
+    <li><b>缺口：</b>考試日期、各主題總練習題數。提供後可改算錯題率，並把讀書順序排進具體日程。</li>
+    <li><b>驗收方式：</b>階段一完成後，針對 RAG、ReAct、聯邦學習做一組變化情境題。只看訂正過的原題，無法分辨是理解還是記住答案。</li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="wrap">資料來源：ipas-notes.md 錯題，科目2 共 25 題，另加第 11、78、79 題。分析日期 2026 年 11 月 7 日。</footer>
+
+<script>
+const TYPES = [
+  {name:"工具選擇錯配", n:13, note:"看到情境，對不到該用的技術", ids:"11、16、20、22、23、37、39、55、78、79、80、81、83", top:true},
+  {name:"定義邊界模糊", n:7, note:"相近概念分不清歸屬", ids:"19、21、24、38、56、59、82"},
+  {name:"機制理解不足", n:6, note:"知道名稱，不知道怎麼運作", ids:"17、18、54、57、58、60"},
+  {name:"漏讀限定詞", n:2, note:"題幹指定層面，答案落在別層", ids:"40、53"}
+];
+const REPEAT = [
+  {t:"RAG 與微調分工", q:"39、78、79（連帶 11、81）", r:"會變動的事實走 RAG；固定的格式口吻走微調。"},
+  {t:"ReAct", q:"55、80", r:"下一步要依中間結果決定，選 ReAct；步驟預先固定，選 Prompt Chaining；單向查完就答，選 RAG。"},
+  {t:"聯邦學習", q:"16、83", r:"資料不能離開各機構但要共同訓練，選聯邦學習；其他隱私技術都不是在「訓練」。"},
+  {t:"APE", q:"17、18", r:"APE 的弱點都在「評估」：只看局部片段、圖轉文字遺失關聯。"}
+];
+const STAGES = [
+  {name:"階段一：重複錯觀念", why:"最先讀。錯過兩次的觀念，考場再錯機率最高。", max:30, tasks:[
+    ["RAG 與微調","39 → 78 → 79 → 81 → 11"],
+    ["ReAct 與相近技術","55 → 80 → 23 → 56"],
+    ["聯邦學習","16 → 83"],
+    ["驗收","不看答案，口頭說出四條判斷規則；說不出來就重讀"]
+  ]},
+  {name:"階段二：其餘工具選擇題", why:"同一套「情境 → 工具」判斷，延伸到剩下的題目。", max:120, tasks:[
+    ["LoRA","37"],["Agent 補檢索與 API","20"],["降低溫度","22"]
+  ]},
+  {name:"階段三：機制題", why:"補「怎麼運作」，避免只記名稱。", max:120, tasks:[
+    ["Decoder 逐詞自迴歸生成","57"],["CLIP 餘弦相似度","54"],["擴散模型","58"],["訓練資料過度記憶","60"],["APE 的評估弱點","17、18"]
+  ]},
+  {name:"階段四：定義邊界與限定詞", why:"進考場前最後看。靠臨場讀題紀律，前一天讀完效果有限。", max:30, tasks:[
+    ["讀科目2 專頁的四種陷阱","限定詞層面、絕對詞、RAG 與微調對調、近義選項"],
+    ["掃過邊界題","19、21、24、38、40、53、56、59、82"]
+  ]}
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const total = TYPES.reduce((a,b) => a + b.n, 0);
+document.getElementById("bars").innerHTML = TYPES.map(t => `
+  <div class="bar-row${t.top ? " top" : ""}">
+    <div class="bar-head"><strong>${esc(t.name)}</strong><span>${t.n} 題，${Math.round(t.n / total * 100)}%</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:${t.n / total * 100}%"></div></div>
+    <p class="bar-note">${esc(t.note)}</p>
+    <p class="bar-ids">題號 ${esc(t.ids)}</p>
+  </div>`).join("");
+
+// repeat cards
+let rmode = "quiz"; const shown = new Set();
+function renderRepeat(){
+  document.getElementById("repeatList").innerHTML = REPEAT.map((x, i) => {
+    const hide = rmode === "quiz" && !shown.has(i);
+    return `<article class="card"><p class="t">${esc(x.t)}<span>重複錯</span></p>
+      <p class="q">題號 ${esc(x.q)}</p>
+      ${hide ? `<button type="button" class="reveal" data-show="${i}">顯示判斷規則</button>` : `<p class="rulebox"><span>${esc(x.r)}</span></p>`}
+    </article>`;
+  }).join("");
+}
+document.querySelectorAll("[data-rmode]").forEach(b => b.addEventListener("click", () => {
+  rmode = b.dataset.rmode; shown.clear();
+  document.querySelectorAll("[data-rmode]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  renderRepeat();
+}));
+document.getElementById("repeatList").addEventListener("click", e => {
+  const b = e.target.closest("[data-show]"); if (!b) return;
+  shown.add(+b.dataset.show); renderRepeat();
+});
+renderRepeat();
+
+// study plan
+const KEY = "ipas-s2-plan-v1";
+let done = new Set();
+try { const raw = localStorage.getItem(KEY); if (raw) done = new Set(JSON.parse(raw)); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch (e) {} };
+let time = "all";
+function renderPlan(){
+  let all = 0, d = 0;
+  document.getElementById("stages").innerHTML = STAGES.map((st, si) => {
+    const scope = time === "all" ? true : time === "30" ? (si === 0 || si === 3) : (si <= 2);
+    const items = st.tasks.map((t, ti) => {
+      const id = `${si}-${ti}`; const isDone = done.has(id);
+      if (scope){ all++; if (isDone) d++; }
+      return `<label class="task${isDone ? " done" : ""}"><input type="checkbox" data-task="${id}"${isDone ? " checked" : ""}><span class="tx">${esc(t[0])}<small>${esc(t[1])}</small></span></label>`;
+    }).join("");
+    return `<div class="stage${scope ? "" : " dim"}"><h3>${esc(st.name)}</h3><p class="why">${esc(st.why)}</p>${items}</div>`;
+  }).join("");
+  document.getElementById("prog").textContent = `目前範圍已完成 ${d}／${all} 項`;
+}
+document.querySelectorAll("[data-time]").forEach(b => b.addEventListener("click", () => {
+  time = b.dataset.time;
+  document.querySelectorAll("[data-time]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  renderPlan();
+}));
+document.getElementById("stages").addEventListener("change", e => {
+  const id = e.target.dataset.task; if (!id) return;
+  e.target.checked ? done.add(id) : done.delete(id);
+  save(); renderPlan();
+});
+renderPlan();
+</script>
+</body>
+</html>

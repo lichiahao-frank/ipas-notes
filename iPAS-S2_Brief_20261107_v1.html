@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>iPAS 科目2 常錯速讀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#EDF1F4; --surface:#FFFFFF; --ink:#18263A; --muted:#5A6A7D; --rule:#D3DBE3;
+  --mark:#FFE15A; --navy:#264A7A; --navy-soft:#E3EAF4;
+  --trap:#A8322A; --trap-bg:#FBEDEB; --ok:#2F6B4F; --ok-bg:#E4F1EA;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#10161D; --surface:#18212B; --ink:#E4EAF0; --muted:#97A6B6; --rule:#2B3743;
+    --mark:#6A5B12; --navy:#9DBBE6; --navy-soft:#1F2C3B;
+    --trap:#F2998F; --trap-bg:#2E1E1C; --ok:#86CBA6; --ok-bg:#1A2C23;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#10161D; --surface:#18212B; --ink:#E4EAF0; --muted:#97A6B6; --rule:#2B3743;
+  --mark:#6A5B12; --navy:#9DBBE6; --navy-soft:#1F2C3B;
+  --trap:#F2998F; --trap-bg:#2E1E1C; --ok:#86CBA6; --ok-bg:#1A2C23;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 132px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+/* Hero */
+header.hero{padding:24px 0 24px}
+.back{display:inline-block;margin-bottom:18px;font-size:14px;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--rule)}
+.back:hover{border-color:var(--navy)}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(30px,7vw,46px);line-height:1.2;margin:0 0 12px;letter-spacing:.02em}
+.hero p{margin:0 0 18px;color:var(--muted);max-width:34em}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.stats b{color:var(--ink);font-size:20px;font-weight:700;margin-right:4px}
+
+/* Sticky controls */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--rule)}
+.bar .wrap{padding-top:10px;padding-bottom:8px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;padding:6px 12px;cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--surface);font-weight:700}
+.search{flex:1 1 160px;min-width:140px;font:inherit;font-size:14px;padding:6px 10px;min-height:36px;border:1px solid var(--rule);border-radius:8px;background:var(--bg);color:var(--ink)}
+.progress{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13px;color:var(--muted)}
+.track{flex:1;height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--ok);transition:width .3s}
+nav.chips{display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding-bottom:2px;scrollbar-width:none}
+nav.chips::-webkit-scrollbar{display:none}
+nav.chips a{flex:none;font-size:13px;color:var(--navy);background:var(--navy-soft);text-decoration:none;padding:3px 10px;border-radius:999px;white-space:nowrap}
+nav.chips a.trap{color:var(--trap);background:var(--trap-bg)}
+
+/* Sections */
+section{padding:28px 0 8px}
+section h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.3;margin:0 0 6px}
+.subj{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--muted);margin-left:8px;vertical-align:middle}
+.rule{margin:0 0 14px;padding:10px 14px;border-left:4px solid var(--navy);background:var(--navy-soft);border-radius:0 8px 8px 0;font-size:15px}
+h3{font-size:15px;font-weight:700;color:var(--muted);margin:18px 0 8px}
+
+.item{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.item.done{opacity:.55}
+.k{font-weight:700;margin:0 0 6px}
+.a{margin:0}
+.a span{background:linear-gradient(transparent 52%,var(--mark) 52%);padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.x{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.x::before{content:"排除：";font-weight:700}
+.reveal{font:inherit;font-size:14px;color:var(--navy);background:transparent;border:1px dashed var(--navy);border-radius:6px;padding:6px 12px;cursor:pointer;min-height:36px}
+.meta{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.num{font-size:12px;color:var(--muted)}
+.orig{font-size:12px;color:var(--navy);background:var(--navy-soft);padding:1px 8px;border-radius:999px}
+.nonote{font-size:12px;color:var(--trap);background:var(--trap-bg);padding:1px 8px;border-radius:999px}
+.mastered{margin-left:auto;font:inherit;font-size:13px;color:var(--muted);background:transparent;border:1px solid var(--rule);border-radius:6px;padding:4px 10px;cursor:pointer;min-height:32px}
+.mastered[aria-pressed="true"]{color:var(--ok);background:var(--ok-bg);border-color:var(--ok);font-weight:700}
+
+/* Traps */
+.traps .item{border-left:4px solid var(--trap)}
+.traps .k{color:var(--trap)}
+.empty{padding:32px 0;text-align:center;color:var(--muted)}
+footer{padding:32px 0 48px;font-size:13px;color:var(--muted)}
+
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back" href="./">回到自學筆記整理</a>　<a class="back" href="iPAS_Brief_20261107_v1.html">全部錯題速讀</a>　<a class="back" href="iPAS-S2_Report_20261107_v1.html">弱點分析與讀書順序</a>
+    <h1>iPAS 科目2 常錯速讀</h1>
+    <p>生成式 AI 應用與規劃。科目2 的 25 題錯題，加上 3 題原標科目1、實際考 RAG 的題目。提示工程與 RAG／Agent 占七成，時間不夠先讀這兩區。</p>
+    <div class="stats">
+      <span><b>25</b>題科目2</span>
+      <span><b>3</b>題原標科目1</span>
+      <span><b>10</b>題提示工程</span>
+      <span><b>5</b>題未寫筆記</span>
+    </div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="row">
+      <div class="seg" role="group" aria-label="閱讀模式">
+        <button type="button" data-mode="read" aria-pressed="true">看答案</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">自測</button>
+      </div>
+      <div class="seg" role="group" aria-label="篩選">
+        <button type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button type="button" data-filter="todo" aria-pressed="false">未熟</button>
+        <button type="button" data-filter="nonote" aria-pressed="false">未寫筆記</button>
+      </div>
+      <input class="search" type="search" placeholder="搜尋關鍵字或題號" aria-label="搜尋關鍵字或題號">
+    </div>
+    <div class="progress"><span id="progText">已熟 0／0</span><div class="track"><div class="fill" id="progFill"></div></div></div>
+    <nav class="chips" id="chips" aria-label="章節"></nav>
+  </div>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<footer class="wrap">來源：ipas-notes.md 錯題中標示科目2 的 25 題，另加原標科目1 的第 11、78、79 題。Copilot 題依題庫答案作答（Codex），現行產品已改用多款模型。「已熟」標記只存在這台裝置的瀏覽器。</footer>
+
+<script>
+const TRAPS = [
+  ["限定詞決定層面","題幹寫「資料層面」「專案初期」「主要考量整合能力」，答案必須落在那一層。其他層面的正確做法照樣算錯。","40、53"],
+  ["絕對詞多半錯","「必然過擬合」「一律」「僅能」，看到先存疑。","59"],
+  ["RAG 與微調對調","會變動的事實走 RAG，固定的格式口吻走微調。選項常把兩者互換。","39、78、79"],
+  ["近義選項","四個選項都在講同一件事時，選因果鏈最完整、最直接的那一個。","24"]
+];
+
+const SECTIONS = [
+ {id:"prompt",title:"提示工程",subj:"10 題",rule:"流程固定還是需要動態決策；要不要改模型參數。",groups:[{items:[
+  ["零樣本最容易失敗的任務","結構化擷取、特定格式（從表格擷取最高氣溫）","情感分類、摘要、翻譯零樣本可勝任","21"],
+  ["只有 1 至 2 個範例，又遇到領域偏移","範例太少，涵蓋不了新領域多樣性，泛化不足","四個選項近似，選因果鏈最完整者","24"],
+  ["Few-shot Prompting 與 Few-shot Fine-tuning","Prompting 免訓練；Fine-tuning 改權重、需防過擬合","「必然過擬合」太絕對；兩者本質不同","59"],
+  ["單線步驟（退款流程）與多方案比較","單線用 CoT；多方案比較、回溯用 ToT","對調或兩者同法皆錯","23"],
+  ["何者不是 CoT 衍生","Zero-shot（只是不給範例）","ReAct、ToT、Self-consistency 都是 CoT 家族","56"],
+  ["推理 → 行動 → 依結果再推理（訂位、查融資）","ReAct","RAG 是單向檢索再生成；Prompt Chaining 步驟預先固定","55、80"],
+  ["風格一致、不需新知識、成本最低","降低生成溫度","微調成本高且不必要","22"],
+  ["APE 用於超長上下文的最大限制","回饋只看局部片段，評不了整體品質","記憶容量有限是模型限制，不是 APE 的問題","18"],
+  ["APE＋圖提示分析互動關係","圖結構轉文字時遺失關聯資訊","Graph Prompting 本就為多分支設計","17"]
+ ]}]},
+ {id:"rag",title:"RAG 與微調",subj:"6 題",rule:"會變動的事實走 RAG，固定的行為風格走微調。標「原標科目1」的 3 題，內容屬這一區。",groups:[{items:[
+  ["大量自有文件，需精準引用","RAG（向量資料庫＋LLM）","塞進系統提示詞超出長度；預訓練知識沒有專屬資料","39"],
+  ["數百頁、常更新，不想每次全文輸入","RAG","反覆摘要流失條文細節；每次更新就微調不可行","78",1],
+  ["即時股價財報＋固定合規格式口吻","即時資料用 RAG；格式口吻用微調","「微調無法影響格式口吻」錯","79",1],
+  ["搜「請假」也能找到「休假申請規定」","向量資料庫語意相似度搜尋","關鍵字比對、全文檢索只能字面匹配","81"],
+  ["RAG 回應過時，更新要全量重建索引而停機","增量或分段更新索引","提升運算效能仍是全量重建","11",1],
+  ["GPU 受限的參數高效微調 PEFT","LoRA（凍結原權重，只訓練低秩矩陣）","蒸餾是壓縮；提示工程不改參數","37"]
+ ]}]},
+ {id:"agent",title:"AI Agent、工具與模型機制",subj:"7 題",rule:"Agent 題先拆成兩個缺口：查不到知識補檢索，做不了動作補 API。",groups:[
+  {name:"Agent 與工具",items:[
+   ["FAQ 常答錯，又無法修改訂單","向量檢索＋API 調用","任務規劃器、溫度參數不對症","20"],
+   ["情境感知代理的核心","利用對話歷史、任務狀態調整行為","跨模態是另一個維度；即時重訓不是定義","38"],
+   ["No-Code／Low-Code 的整合能力","API 介接、Webhooks、開放式架構","封閉架構阻礙整合；地端部署是資料落地議題","53"],
+   ["GitHub Copilot 的技術","Codex 支援的 LLM 生成式補全，可用於私有庫與本地","不是搜尋程式碼庫，也不是靜態分析","19"]
+  ]},
+  {name:"模型機制",items:[
+   ["Encoder-Decoder 中 Decoder 的作用","依語義表示＋已生成內容，逐詞自迴歸產生","不是一次產出整句；不是 Encoder 事後修正","57"],
+   ["CLIP 如何衡量圖文相符","同一向量空間的餘弦相似度","BLEU 是文字對文字；交叉熵是訓練損失","54"],
+   ["從雜訊開始，多步逐漸去噪","擴散模型 Diffusion","GAN 一步生成；VAE 編碼到潛在空間再解碼；CNN 只是骨幹","58"]
+  ]}
+ ]},
+ {id:"privacy",title:"隱私、資安與維運",subj:"5 題",rule:"題幹限定在哪一層面，答案就必須落在那一層。",groups:[{items:[
+  ["資料分散、不能交出原始資料、要共同訓練","聯邦學習（資料不動，模型參數動）","同態加密成本高；多方安全計算偏共算結果；零知識證明用於驗證","16、83"],
+  ["專案初期，從「資料層面」降個資風險","資料最小化＋去識別化","輸出遮罩是輸出端；角色權限是存取層；加密是儲存層","40"],
+  ["模型說出未輸入的真實客戶資料，已排除入侵與輸入觸發","訓練階段過度記憶訓練資料","跨使用者共享上下文是會話隔離問題","60"],
+  ["分類標準不變，輸入圖片特徵分布改變","資料漂移 Data Drift","輸入與答案的關係改變才是概念漂移","82"]
+ ]}]}
+];
+
+const NONOTE = new Set(["15","19","24","40","51","57","61","74","78"]);
+const KEY = "ipas-s2-mastered-v1";
+let mastered = new Set();
+try { const raw = localStorage.getItem(KEY); if (raw) mastered = new Set(JSON.parse(raw)); } catch (e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...mastered])); } catch (e) {} }
+
+const state = { mode:"read", filter:"all", q:"", revealed:new Set() };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hasNoNote = n => n.split("、").some(x => NONOTE.has(x));
+
+// flatten with stable ids
+const ALL = [];
+SECTIONS.forEach(s => s.groups.forEach((g, gi) => g.items.forEach((it, ii) => {
+  ALL.push({ id:`${s.id}-${gi}-${ii}`, sec:s.id, k:it[0], a:it[1], x:it[2], n:it[3], orig:!!it[4], nonote:hasNoNote(it[3]) });
+})));
+
+function matches(it){
+  if (state.filter === "todo" && mastered.has(it.id)) return false;
+  if (state.filter === "nonote" && !it.nonote) return false;
+  if (state.q){
+    const q = state.q.toLowerCase();
+    return [it.k, it.a, it.x, it.n].join(" ").toLowerCase().includes(q);
+  }
+  return true;
+}
+
+function card(it){
+  const done = mastered.has(it.id);
+  const hide = state.mode === "quiz" && !state.revealed.has(it.id);
+  const ans = hide
+    ? `<button type="button" class="reveal" data-reveal="${it.id}">顯示答案</button>`
+    : `<p class="a"><span>${esc(it.a)}</span></p>${it.x ? `<p class="x">${esc(it.x)}</p>` : ""}`;
+  return `<article class="item${done ? " done" : ""}">
+    <p class="k">${esc(it.k)}</p>${ans}
+    <div class="meta"><span class="num">題號 ${esc(it.n)}</span>${it.orig ? '<span class="orig">原標科目1</span>' : ""}${it.nonote ? '<span class="nonote">未寫筆記</span>' : ""}
+    <button type="button" class="mastered" data-master="${it.id}" aria-pressed="${done}">${done ? "已熟" : "標記已熟"}</button></div>
+  </article>`;
+}
+
+function render(){
+  let html = "";
+  const showTraps = state.filter === "all" && !state.q;
+  if (showTraps){
+    html += `<section id="traps" class="traps"><h2>先讀：四種出題陷阱</h2>
+      <p class="rule">錯題中反覆出現的出題手法。進考場前最後再看一次。</p>
+      ${TRAPS.map(t => `<article class="item"><p class="k">${esc(t[0])}</p><p class="a">${esc(t[1])}</p><div class="meta"><span class="num">題號 ${esc(t[2])}</span></div></article>`).join("")}
+    </section>`;
+  }
+  let shown = 0;
+  SECTIONS.forEach(s => {
+    let body = "";
+    s.groups.forEach((g, gi) => {
+      const items = ALL.filter(it => it.sec === s.id && it.id.startsWith(`${s.id}-${gi}-`) && matches(it));
+      if (!items.length) return;
+      shown += items.length;
+      body += (g.name ? `<h3>${esc(g.name)}</h3>` : "") + items.map(card).join("");
+    });
+    if (body){
+      html += `<section id="${s.id}"><h2>${esc(s.title)}<span class="subj">${s.subj}</span></h2><p class="rule">${esc(s.rule)}</p>${body}</section>`;
+    }
+  });
+  if (!shown) html += `<p class="empty">沒有符合的題目。清除搜尋，或切換到「全部」。</p>`;
+  document.getElementById("main").innerHTML = html;
+
+  const chips = (showTraps ? `<a class="trap" href="#traps">陷阱</a>` : "")
+    + SECTIONS.filter(s => document.getElementById(s.id)).map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join("");
+  document.getElementById("chips").innerHTML = chips;
+
+  const total = ALL.length, m = ALL.filter(it => mastered.has(it.id)).length;
+  document.getElementById("progText").textContent = `已熟 ${m}／${total}`;
+  document.getElementById("progFill").style.width = `${total ? m / total * 100 : 0}%`;
+}
+
+document.querySelectorAll("[data-mode]").forEach(b => b.addEventListener("click", () => {
+  state.mode = b.dataset.mode; state.revealed.clear();
+  document.querySelectorAll("[data-mode]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+}));
+document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => {
+  state.filter = b.dataset.filter;
+  document.querySelectorAll("[data-filter]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+}));
+document.querySelector(".search").addEventListener("input", e => { state.q = e.target.value.trim(); render(); });
+document.getElementById("main").addEventListener("click", e => {
+  const r = e.target.closest("[data-reveal]");
+  if (r){ state.revealed.add(r.dataset.reveal); render(); return; }
+  const m = e.target.closest("[data-master]");
+  if (m){
+    const id = m.dataset.master;
+    mastered.has(id) ? mastered.delete(id) : mastered.add(id);
+    save(); render();
+  }
+});
+render();
+</script>
+</body>
+</html>
