@@ -290,12 +290,18 @@ mark strong{color:#B7322A}
   h2{break-after:avoid}
   .tbl{break-inside:avoid}
 }
+.brieflink{display:flex;align-items:center;gap:10px;margin:14px 0 4px;padding:10px 14px;border:1px solid var(--red);border-radius:8px;background:var(--red-wash);color:var(--ink);text-decoration:none;max-width:900px}
+.brieflink b{color:var(--red)}
+.brieflink span{color:var(--ink-soft);font-size:.9rem}
+.brieflink:hover{border-width:2px;padding:9px 13px}
+aside .brieflink{margin:0 0 18px;font-size:.9rem;flex-direction:column;align-items:flex-start;gap:2px}
 </style>
 </head>
 <body>
 <div class="layout">
 <aside aria-label="目錄">
 <button type="button" class="searchbtn" data-open-search><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>搜尋關鍵字<kbd>/</kbd></button>
+<a class="brieflink" href="iPAS_Brief_20261107_v1.html"><b>考前常錯速讀</b><span>83 題錯題整理成判斷規則，可切換自測模式</span></a>
 <h2>目錄</h2>
 <nav><ol class="toc-l1"><li><a href="#map">學習地圖</a></li><li><a href="#s1">1. AI 發展脈絡與模型類型</a><ol class="toc-l2"><li><a href="#s2">1.1 AI 演進路徑</a></li><li><a href="#s3">1.2 鑑別式 AI vs. 生成式 AI</a></li><li><a href="#s4">1.3 AI 常見問題與解法</a></li></ol></li><li><a href="#s5">2. AI 治理與負責任 AI</a><ol class="toc-l2"><li><a href="#s6">2.1 AI 治理的八個面向</a></li><li><a href="#s7">2.2 負責任 AI（RAI）四大面向</a></li><li><a href="#s8">2.3 台灣人工智慧基本法</a></li><li><a href="#s9">2.4 AI 指導手冊</a></li><li><a href="#s10">2.5 歐盟 AI 治理</a></li></ol></li><li><a href="#s11">3. 大數據與資料工程</a><ol class="toc-l2"><li><a href="#s12">3.1 大數據 5V</a></li><li><a href="#s13">3.2 Hadoop 生態系</a></li><li><a href="#s14">3.3 SQL vs. NoSQL</a></li><li><a href="#s15">3.4 三大雲端資料架構</a></li><li><a href="#s16">3.5 資料處理：批次 vs. 串流</a></li><li><a href="#s17">3.6 資料整合：ETL / ELT</a></li></ol></li><li><a href="#s18">4. 資料分析</a><ol class="toc-l2"><li><a href="#s19">4.1 文本理解模型</a></li><li><a href="#s20">4.2 時間模式</a></li><li><a href="#s21">4.3 資料整理戰略架構</a></li><li><a href="#s22">4.4 資料探勘</a></li><li><a href="#s23">4.5 EDA 探索性資料分析（Exploratory Data Analysis）</a></li><li><a href="#s24">4.6 資料來源選擇</a></li><li><a href="#s25">4.7 資料視覺化（資料圖）</a></li></ol></li><li><a href="#s26">5. 資料前處理與資料保護</a><ol class="toc-l2"><li><a href="#s27">5.1 缺失資料</a></li><li><a href="#s28">5.2 極端值處理</a></li><li><a href="#s29">5.3 資料前處理與特徵工程</a></li><li><a href="#s30">5.4 隱私保護</a></li></ol></li><li><a href="#s31">6. 機器學習</a><ol class="toc-l2"><li><a href="#s32">6.1 機器學習流程與學習類型</a></li><li><a href="#s33">6.2 半監督學習與主動學習</a></li><li><a href="#s34">6.3 資料分割：數據分成三階段</a></li><li><a href="#s35">6.4 泛化能力</a></li><li><a href="#s36">6.5 過擬合與降維</a></li><li><a href="#s37">6.6 特徵共線性</a></li><li><a href="#s38">6.7 超參數調整與最佳化</a></li></ol></li><li><a href="#s39">7. 深度學習訓練</a><ol class="toc-l2"><li><a href="#s40">7.1 梯度相關</a></li><li><a href="#s41">7.2 損失函數與交叉熵</a></li></ol></li><li><a href="#s42">8. 模型評估</a><ol class="toc-l2"><li><a href="#s43">8.1 分類模型評估</a></li><li><a href="#s44">8.2 不平衡數據集</a></li><li><a href="#s45">8.3 迴歸模型評估指標</a></li></ol></li><li><a href="#s46">9. 生成式 AI 技術</a><ol class="toc-l2"><li><a href="#s47">9.1 Domain AI 與微調</a></li><li><a href="#s48">9.2 RAG 檢索增強生成</a></li><li><a href="#s49">9.3 注意力機制與 Transformer</a></li><li><a href="#s50">9.4 電腦視覺</a></li><li><a href="#s51">9.5 提示工程</a></li><li><a href="#s52">9.6 AI 工具比較</a></li></ol></li><li><a href="#s53">10. AI Agent</a><ol class="toc-l2"><li><a href="#s54">10.1 Agent AI vs. LLM</a></li><li><a href="#s55">10.2 MCP vs. A2A</a></li><li><a href="#s56">10.3 Agent 協作流程</a></li><li><a href="#s57">10.4 Agent Skill</a></li><li><a href="#s58">10.5 Agent 常見問題</a></li><li><a href="#s59">10.6 人機協作</a></li><li><a href="#s60">10.7 提示注入與防護</a></li></ol></li><li><a href="#s61">11. AI 導入、部署與維運</a><ol class="toc-l2"><li><a href="#s62">11.1 AI 導入流程</a></li><li><a href="#s63">11.2 製造業指標</a></li><li><a href="#s64">11.3 AI 檢測報告：Benchmark</a></li><li><a href="#s65">11.4 部署架構與監控</a></li><li><a href="#s66">11.5 部署策略與版本控制</a></li><li><a href="#s67">11.6 部署後風險：過時（模型漂移）</a></li><li><a href="#s68">11.7 部署後風險：偏見擴大</a></li><li><a href="#s69">11.8 MLOps 監測（Monitoring &amp; Observability）</a></li></ol></li></ol></nav>
 </aside>
@@ -305,6 +311,7 @@ mark strong{color:#B7322A}
 <h1>iPAS AI 應用規劃師：自學筆記整理</h1>
 <p>來源：手寫筆記「iPAS自學路」（2026 年 10 月 4 日起），共 3 頁。</p>
 <p>只整理手寫筆記內容並依主題分組，未補充筆記以外的知識。樹狀圖與相關連結用來呈現概念之間的階層與關聯。</p>
+<a class="brieflink" href="iPAS_Brief_20261107_v1.html"><b>考前常錯速讀</b><span>83 題錯題整理成判斷規則，可切換自測模式</span></a>
 <div class="controls">
 <div class="legend">
 <span class="item"><mark>螢光筆</mark>原筆記劃線範圍</span>

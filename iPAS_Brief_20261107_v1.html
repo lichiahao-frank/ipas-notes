@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>iPAS 考前常錯速讀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#EDF1F4; --surface:#FFFFFF; --ink:#18263A; --muted:#5A6A7D; --rule:#D3DBE3;
+  --mark:#FFE15A; --navy:#264A7A; --navy-soft:#E3EAF4;
+  --trap:#A8322A; --trap-bg:#FBEDEB; --ok:#2F6B4F; --ok-bg:#E4F1EA;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#10161D; --surface:#18212B; --ink:#E4EAF0; --muted:#97A6B6; --rule:#2B3743;
+    --mark:#6A5B12; --navy:#9DBBE6; --navy-soft:#1F2C3B;
+    --trap:#F2998F; --trap-bg:#2E1E1C; --ok:#86CBA6; --ok-bg:#1A2C23;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#10161D; --surface:#18212B; --ink:#E4EAF0; --muted:#97A6B6; --rule:#2B3743;
+  --mark:#6A5B12; --navy:#9DBBE6; --navy-soft:#1F2C3B;
+  --trap:#F2998F; --trap-bg:#2E1E1C; --ok:#86CBA6; --ok-bg:#1A2C23;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 132px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+/* Hero */
+header.hero{padding:24px 0 24px}
+.back{display:inline-block;margin-bottom:18px;font-size:14px;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--rule)}
+.back:hover{border-color:var(--navy)}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(30px,7vw,46px);line-height:1.2;margin:0 0 12px;letter-spacing:.02em}
+.hero p{margin:0 0 18px;color:var(--muted);max-width:34em}
+.stats{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.stats b{color:var(--ink);font-size:20px;font-weight:700;margin-right:4px}
+
+/* Sticky controls */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--rule)}
+.bar .wrap{padding-top:10px;padding-bottom:8px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;padding:6px 12px;cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--surface);font-weight:700}
+.search{flex:1 1 160px;min-width:140px;font:inherit;font-size:14px;padding:6px 10px;min-height:36px;border:1px solid var(--rule);border-radius:8px;background:var(--bg);color:var(--ink)}
+.progress{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13px;color:var(--muted)}
+.track{flex:1;height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--ok);transition:width .3s}
+nav.chips{display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding-bottom:2px;scrollbar-width:none}
+nav.chips::-webkit-scrollbar{display:none}
+nav.chips a{flex:none;font-size:13px;color:var(--navy);background:var(--navy-soft);text-decoration:none;padding:3px 10px;border-radius:999px;white-space:nowrap}
+nav.chips a.trap{color:var(--trap);background:var(--trap-bg)}
+
+/* Sections */
+section{padding:28px 0 8px}
+section h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.3;margin:0 0 6px}
+.subj{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--muted);margin-left:8px;vertical-align:middle}
+.rule{margin:0 0 14px;padding:10px 14px;border-left:4px solid var(--navy);background:var(--navy-soft);border-radius:0 8px 8px 0;font-size:15px}
+h3{font-size:15px;font-weight:700;color:var(--muted);margin:18px 0 8px}
+
+.item{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.item.done{opacity:.55}
+.k{font-weight:700;margin:0 0 6px}
+.a{margin:0}
+.a span{background:linear-gradient(transparent 52%,var(--mark) 52%);padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.x{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.x::before{content:"排除：";font-weight:700}
+.reveal{font:inherit;font-size:14px;color:var(--navy);background:transparent;border:1px dashed var(--navy);border-radius:6px;padding:6px 12px;cursor:pointer;min-height:36px}
+.meta{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.num{font-size:12px;color:var(--muted)}
+.nonote{font-size:12px;color:var(--trap);background:var(--trap-bg);padding:1px 8px;border-radius:999px}
+.mastered{margin-left:auto;font:inherit;font-size:13px;color:var(--muted);background:transparent;border:1px solid var(--rule);border-radius:6px;padding:4px 10px;cursor:pointer;min-height:32px}
+.mastered[aria-pressed="true"]{color:var(--ok);background:var(--ok-bg);border-color:var(--ok);font-weight:700}
+
+/* Traps */
+.traps .item{border-left:4px solid var(--trap)}
+.traps .k{color:var(--trap)}
+.empty{padding:32px 0;text-align:center;color:var(--muted)}
+footer{padding:32px 0 48px;font-size:13px;color:var(--muted)}
+
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back" href="./">回到自學筆記整理</a>
+    <h1>iPAS 考前常錯速讀</h1>
+    <p>83 題錯題改寫成「題幹關鍵字 → 答案 → 排除理由」。進考場前切到自測模式，看關鍵字先自己答，熟了就標記。</p>
+    <div class="stats">
+      <span><b>83</b>題錯題</span>
+      <span><b>58</b>科目1</span>
+      <span><b>25</b>科目2</span>
+      <span><b>9</b>題未寫筆記</span>
+    </div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="row">
+      <div class="seg" role="group" aria-label="閱讀模式">
+        <button type="button" data-mode="read" aria-pressed="true">看答案</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">自測</button>
+      </div>
+      <div class="seg" role="group" aria-label="篩選">
+        <button type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button type="button" data-filter="todo" aria-pressed="false">未熟</button>
+        <button type="button" data-filter="nonote" aria-pressed="false">未寫筆記</button>
+      </div>
+      <input class="search" type="search" placeholder="搜尋關鍵字或題號" aria-label="搜尋關鍵字或題號">
+    </div>
+    <div class="progress"><span id="progText">已熟 0／0</span><div class="track"><div class="fill" id="progFill"></div></div></div>
+    <nav class="chips" id="chips" aria-label="章節"></nav>
+  </div>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<footer class="wrap">來源：ipas-notes.md 錯題 83 題。Copilot 題依題庫答案作答（Codex），現行產品已改用多款模型。「已熟」標記只存在這台裝置的瀏覽器。</footer>
+
+<script>
+const TRAPS = [
+  ["限定詞決定層面","題幹寫「資料層面」「專案初期」「主要考量整合能力」，答案必須落在那一層。其他層面的正確做法照樣算錯。","40、53"],
+  ["絕對詞多半錯","「必然」「一律」「僅能」「仍可完整處理」，看到先存疑。","49、59、66"],
+  ["概念對調","把 L1／L2、Q 表／DQN、RAG／微調的適用情境互換。","2、5、79"],
+  ["近義選項","四個選項都在講同一件事時，選因果鏈最完整、最直接的那一個。","24"],
+  ["時間尺度","即時告警是異常偵測；未來一週故障機率是預測性維護。","72"],
+  ["半監督與非監督","只學「正常」分布去抓偏離，本題庫歸為半監督；完全無標籤劃分型態才是非監督。","34、50"]
+];
+
+const SECTIONS = [
+ {id:"prep",title:"資料前處理與特徵工程",subj:"科目1",rule:"先看資料型態（類別、數值、偏態、相關），再決定轉換方法。",groups:[{items:[
+  ["兩欄位有交互作用（星期 × 時段）","特徵交叉 Feature Cross","One-hot 只轉單一欄位；正規化只縮放範圍","1"],
+  ["無序類別直接輸入線性模型，哪種編碼會誤導","Label Encoding，會偽造大小順序","安全做法是 One-Hot","41"],
+  ["數值範圍差異大，梯度下降收斂慢","數值標準化（Z-score）","One-hot 給類別；布林轉換只給二值","12"],
+  ["Z-score 的計算與性質","(x − 平均) ÷ 標準差；沒有上下界；不改變分配形狀","壓到 0 至 1 是 Min-Max；偏態轉完仍是偏態","67"],
+  ["高度右偏，少數極大值","對數轉換 Log Transformation","Binning 損失資訊；重抽樣處理的是類別不平衡","35"],
+  ["近常態資料找離群值","Z 分數／標準差法，再依需求處置","直接全刪過於武斷；Log 用於偏態","14"],
+  ["右偏欄位有遺漏值","中位數","對稱用平均、類別用眾數、填 0 扭曲分配","69"],
+  ["特徵彼此高度相關，要降維","PCA 主成分分析","標準化只調尺度，不降維","68"],
+  ["預測當下拿不到的資訊（下個月是否消費）","不能當特徵，屬資料洩漏 Data Leakage","特徵必須是預測時點已知的資料","66"],
+  ["哪種模型不需要標準化","樹模型：決策樹、隨機森林、XGBoost","KNN、SVM、線性、邏輯迴歸、神經網路都需要","42"],
+  ["L1 與 L2 正則化差在哪","L1 = Lasso = 絕對值 = 權重會變 0；L2 = Ridge = 平方 = 變小但不為 0","權重個數多反而容易過擬合","2"],
+  ["哪個是結構化資料","關聯式資料庫（MySQL）的表格","JSON、XML 是半結構化；文字、影像、音訊是非結構化","26"]
+ ]}]},
+ {id:"models",title:"學習類型、模型與架構",subj:"科目1",rule:"先判斷有沒有標籤，再判斷輸入的形狀（單點數值、序列、影像、長文）。",groups:[
+  {name:"學習類型",items:[
+   ["有標籤（是否點擊、診斷結果、已標註詐欺）","監督式","","13、34"],
+   ["無標籤，依相似度分群（顧客分群、股價型態）","非監督式","有標籤的分類都是監督式","13、34"],
+   ["K-Means 的 K 代表什麼","要分成的群組數量","不是特徵數、樣本數或迭代次數","61"],
+   ["少量已標註＋大量未標註","半監督式","","34"],
+   ["異常難標註，靠大量正常資料的分布抓偏離","半監督式異常偵測","監督式需完整標註；關聯規則是找常見組合","50"],
+   ["依錯誤損失作為回饋，持續調整策略","強化學習","","34"],
+   ["機器學習三要素","資料、模型、損失函數","訓練／驗證／測試集是資料切分，不是要素","62"]
+  ]},
+  {name:"模型與輸出層",items:[
+   ["輸出 0 至 1 機率，再依閾值二分類","邏輯迴歸（sigmoid）","SVM 不原生給機率；K-means 是非監督","6"],
+   ["多類別互斥，輸出機率加總為 1","Softmax","Sigmoid 給二元或多標籤；ReLU 用在隱藏層；線性給迴歸","25"],
+   ["隨機森林如何改進單一決策樹","多棵隨機決策樹投票，降低過擬合","核函數是 SVM 的做法","63"],
+   ["生成式還是鑑別式","生成式：GAN、HMM、樸素貝氏，學 P(x,y)；鑑別式：CRF、SVM、邏輯迴歸、隨機森林，學 P(y|x)","CRF 是監督式、鑑別式","51、64"],
+   ["讓生成回應維持語境一致","條件語言模型","決策樹、Q-learning、基因演算法都不做語言生成","3"],
+   ["深度學習的特性","多層網路＋自動學特徵＋需要大量資料","「需人工設計特徵」「不需大量資料」都錯","44"]
+  ]},
+  {name:"架構選擇",items:[
+   ["時間序列，需保留早期資訊（過去 24 個月）","LSTM 或 GRU，用閘門解決 RNN 梯度消失","單點數值分群、影像都不需要序列模型","32、70"],
+   ["長文中直接關聯遠距離內容，不需依序傳遞","Transformer（自注意力、可平行運算）","RNN、LSTM 需逐步傳遞；CNN 感受野是局部的","73"],
+   ["傳統 Transformer 處理長文的限制","固定長度的上下文窗口","「仍可完整處理所有輸入」錯；推理不需重訓","49"],
+   ["創作全新內容，題目明確排除「重建」","GAN","Autoencoder 是重建；KNN、隨機森林不會生成","52"],
+   ["從雜訊開始，多步逐漸去噪","擴散模型 Diffusion","GAN 一步生成；VAE 編碼到潛在空間再解碼；CNN 只是骨幹","58、76"]
+  ]},
+  {name:"AI 分類與平台",items:[
+   ["只做單一任務的商用產品","弱 AI（狹義 AI）","AGI 需跨領域遷移，尚未實現；ASI 只存在理論","65"],
+   ["缺 AI 人力，要快速用自家資料驗證","雲端 AutoML","現成套件無法用自家資料客製；開源框架仍需 ML 工程能力","33"]
+  ]}
+ ]},
+ {id:"training",title:"訓練問題與評估指標",subj:"科目1",rule:"先從症狀判斷病名，再選解法。指標題先分「分類」或「迴歸」。",groups:[
+  {name:"訓練症狀與解法",items:[
+   ["訓練 98%、測試 72%","過擬合 → 資料增強（旋轉、翻轉、裁切）","加深模型、只留好資料會更糟","27"],
+   ["誤差長期不降，參數更新極小","梯度消失 → 調整啟動函數（Sigmoid／Tanh 改 ReLU）","延長訓練、加資料、簡化結構都不對症","36"],
+   ["參數更新方向的依據","損失函數的梯度，往反方向更新","不是準確率（不可微分），也不是啟動函數輸出","71"],
+   ["GAN 只產出同一隻橘貓","模式崩潰 Mode Collapse","不是過擬合，也不是梯度問題","77"],
+   ["微調後原任務表現變差","災難性遺忘，用 LoRA、正則化、重播舊資料緩解","不是收斂不足","7"],
+   ["異常極少，樣本高度不平衡","只用正常資料訓練自編碼器，看重建誤差","複製異常易過擬合；SMOTE 對時間序列易造出不真實樣本","9"]
+  ]},
+  {name:"評估指標",items:[
+   ["漏抓代價高（疾病、害蟲、詐欺、安檢）","Recall：80 ÷ (80 + 10) = 88.9%","Precision 看的是誤報","43"],
+   ["誤報代價高（垃圾信誤刪、冤枉好人）","Precision：80 ÷ (80 + 20) = 80%","","43"],
+   ["預測連續數值（房價、銷量）","MSE、RMSE、MAE、R²","Precision、Recall、F1 全是分類指標","45"]
+  ]},
+  {name:"強化學習",items:[
+   ["一直推已知好商品，還是嘗試未知商品","探索與利用的權衡","Bias-Variance 是模型複雜度問題","46"],
+   ["Q 表在高維狀態爆炸","Deep Q-Learning：神經網路近似 Q 值＋經驗回放","兩者都不靠標記資料；DQN 正是搭配經驗回放","5"],
+   ["答案可驗證的多步推理（數學、邏輯、程式）","GRPO","情緒分類、語音轉文字、影像辨識不是主要場景","47"]
+  ]}
+ ]},
+ {id:"xai",title:"可解釋 AI（XAI）",subj:"科目1",rule:"錯最多的單一主題（7 題）。所有方法都是「解釋」，選項出現提升準確度、取代原模型、調整權重、加速收斂，一律排除。",groups:[{items:[
+  ["LIME 是什麼","事後（post-hoc）、模型無關，在單一預測附近用簡單模型做局部近似","「取代原模型推論」「提升整體準確度」","8、28"],
+  ["SHAP 提供什麼資訊","依 Shapley value，把單一預測拆成各特徵的貢獻（正負與大小）","「自動篩除變數」「影響損失收斂速度」","29"],
+  ["Saliency Map 標示什麼","單一輸入中對該次預測影響最大的區域；影像是像素，文字是字詞","「段落相似度」「版本差異」「高頻詞」","31、48"],
+  ["反事實解釋最適合哪種應用","模型固定，輸入改哪些、結果就翻轉（what-if）","「回溯呆帳主因」「整體風險分布」","30"],
+  ["Permutation Importance 怎麼判斷重要性","打亂單一特徵，誤差漲越多越重要；不需重新訓練","「誤差不變代表重要」「需重新訓練」","74"],
+  ["內建可解釋 Intrinsic 指什麼","模型本身透明，例如線性模型、決策樹","把 LIME 歸到這一類","28"]
+ ]}]},
+ {id:"analysis",title:"分析類型、EDA 與電腦視覺",subj:"科目1",rule:"看題幹的時間方向（過去、原因、未來）與輸出粒度（整張、方框、像素）。",groups:[
+  {name:"分析類型",items:[
+   ["視覺化過去走勢、標準差","描述性分析：發生了什麼","","4"],
+   ["找出去年促銷失效的地區","診斷性分析：為何發生","","4"],
+   ["建模推算下一季銷量","預測性分析：未來會怎樣","","4"],
+   ["建議最佳行動方案","指示性分析：該怎麼做","","4"]
+  ]},
+  {name:"EDA 與圖表",items:[
+   ["哪個做法屬於 EDA","畫圖看分布與相關，形成假設","建模預測、t 檢定（驗證性）、分群後立刻定策略都不是","10"],
+   ["看單一連續變數的分布","直方圖","趨勢用折線圖；兩變數相關用散佈圖","15"]
+  ]},
+  {name:"監控與影像",items:[
+   ["設備數據一偏離正常就即時告警","異常偵測","故障分類發生在偵測之後；預測未來一週故障機率是預測性維護","72"],
+   ["每個像素標類別，還要算面積","影像分割","影像分類只給整張一個標籤；物件偵測的方框不等於實際面積","75"]
+  ]}
+ ]},
+ {id:"prompt",title:"提示工程",subj:"科目2",rule:"流程固定還是需要動態決策；要不要改模型參數。",groups:[{items:[
+  ["零樣本最容易失敗的任務","結構化擷取、特定格式（從表格擷取最高氣溫）","情感分類、摘要、翻譯零樣本可勝任","21"],
+  ["只有 1 至 2 個範例，又遇到領域偏移","範例太少，涵蓋不了新領域多樣性，泛化不足","四個選項近似，選因果鏈最完整者","24"],
+  ["Few-shot Prompting 與 Few-shot Fine-tuning","Prompting 免訓練；Fine-tuning 改權重、需防過擬合","「必然過擬合」太絕對；兩者本質不同","59"],
+  ["單線步驟（退款流程）與多方案比較","單線用 CoT；多方案比較、回溯用 ToT","對調或兩者同法皆錯","23"],
+  ["何者不是 CoT 衍生","Zero-shot（只是不給範例）","ReAct、ToT、Self-consistency 都是 CoT 家族","56"],
+  ["推理 → 行動 → 依結果再推理（訂位、查融資）","ReAct","RAG 是單向檢索再生成；Prompt Chaining 步驟預先固定","55、80"],
+  ["風格一致、不需新知識、成本最低","降低生成溫度","微調成本高且不必要","22"],
+  ["APE 用於超長上下文的最大限制","回饋只看局部片段，評不了整體品質","記憶容量有限是模型限制，不是 APE 的問題","18"],
+  ["APE＋圖提示分析互動關係","圖結構轉文字時遺失關聯資訊","Graph Prompting 本就為多分支設計","17"]
+ ]}]},
+ {id:"rag",title:"RAG、微調與 AI Agent",subj:"科目2",rule:"會變動的事實走 RAG，固定的行為風格走微調。題號 78、79 雖標科目1，內容屬這一區。",groups:[
+  {name:"RAG 與微調",items:[
+   ["大量自有文件，需精準引用","RAG（向量資料庫＋LLM）","塞進系統提示詞超出長度；預訓練知識沒有專屬資料","39"],
+   ["數百頁、常更新，不想每次全文輸入","RAG","反覆摘要流失條文細節；每次更新就微調不可行","78"],
+   ["即時股價財報＋固定合規格式口吻","即時資料用 RAG；格式口吻用微調","「微調無法影響格式口吻」錯","79"],
+   ["搜「請假」也能找到「休假申請規定」","向量資料庫語意相似度搜尋","關鍵字比對、全文檢索只能字面匹配","81"],
+   ["RAG 回應過時，更新要全量重建索引而停機","增量或分段更新索引","提升運算效能仍是全量重建","11"],
+   ["GPU 受限的參數高效微調 PEFT","LoRA（凍結原權重，只訓練低秩矩陣）","蒸餾是壓縮；提示工程不改參數","37"]
+  ]},
+  {name:"Agent 與模型機制",items:[
+   ["FAQ 常答錯，又無法修改訂單","向量檢索＋API 調用","查不到知識補檢索，做不了動作補 API；任務規劃器、溫度參數不對症","20"],
+   ["情境感知代理的核心","利用對話歷史、任務狀態調整行為","跨模態是另一個維度；即時重訓不是定義","38"],
+   ["CLIP 如何衡量圖文相符","同一向量空間的餘弦相似度","BLEU 是文字對文字；交叉熵是訓練損失","54"],
+   ["Encoder-Decoder 中 Decoder 的作用","依語義表示＋已生成內容，逐詞自迴歸產生","不是一次產出整句；不是 Encoder 事後修正","57"],
+   ["No-Code／Low-Code 的整合能力","API 介接、Webhooks、開放式架構","封閉架構阻礙整合；地端部署是資料落地議題","53"],
+   ["GitHub Copilot 的技術","Codex 支援的 LLM 生成式補全，可用於私有庫與本地","不是搜尋程式碼庫，也不是靜態分析","19"]
+  ]}
+ ]},
+ {id:"privacy",title:"隱私、資安與維運",subj:"科目2",rule:"題幹限定在哪一層面，答案就必須落在那一層。",groups:[{items:[
+  ["資料分散、不能交出原始資料、要共同訓練","聯邦學習（資料不動，模型參數動）","同態加密成本高；多方安全計算偏共算結果；零知識證明用於驗證","16、83"],
+  ["專案初期，從「資料層面」降個資風險","資料最小化＋去識別化","輸出遮罩是輸出端；角色權限是存取層；加密是儲存層","40"],
+  ["模型說出未輸入的真實客戶資料，已排除入侵與輸入觸發","訓練階段過度記憶訓練資料","跨使用者共享上下文是會話隔離問題","60"],
+  ["分類標準不變，輸入圖片特徵分布改變","資料漂移 Data Drift","輸入與答案的關係改變才是概念漂移","82"]
+ ]}]}
+];
+
+const NONOTE = new Set(["15","19","24","40","51","57","61","74","78"]);
+const KEY = "ipas-mastered-v1";
+let mastered = new Set();
+try { const raw = localStorage.getItem(KEY); if (raw) mastered = new Set(JSON.parse(raw)); } catch (e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...mastered])); } catch (e) {} }
+
+const state = { mode:"read", filter:"all", q:"", revealed:new Set() };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hasNoNote = n => n.split("、").some(x => NONOTE.has(x));
+
+// flatten with stable ids
+const ALL = [];
+SECTIONS.forEach(s => s.groups.forEach((g, gi) => g.items.forEach((it, ii) => {
+  ALL.push({ id:`${s.id}-${gi}-${ii}`, sec:s.id, k:it[0], a:it[1], x:it[2], n:it[3], nonote:hasNoNote(it[3]) });
+})));
+
+function matches(it){
+  if (state.filter === "todo" && mastered.has(it.id)) return false;
+  if (state.filter === "nonote" && !it.nonote) return false;
+  if (state.q){
+    const q = state.q.toLowerCase();
+    return [it.k, it.a, it.x, it.n].join(" ").toLowerCase().includes(q);
+  }
+  return true;
+}
+
+function card(it){
+  const done = mastered.has(it.id);
+  const hide = state.mode === "quiz" && !state.revealed.has(it.id);
+  const ans = hide
+    ? `<button type="button" class="reveal" data-reveal="${it.id}">顯示答案</button>`
+    : `<p class="a"><span>${esc(it.a)}</span></p>${it.x ? `<p class="x">${esc(it.x)}</p>` : ""}`;
+  return `<article class="item${done ? " done" : ""}">
+    <p class="k">${esc(it.k)}</p>${ans}
+    <div class="meta"><span class="num">題號 ${esc(it.n)}</span>${it.nonote ? '<span class="nonote">未寫筆記</span>' : ""}
+    <button type="button" class="mastered" data-master="${it.id}" aria-pressed="${done}">${done ? "已熟" : "標記已熟"}</button></div>
+  </article>`;
+}
+
+function render(){
+  let html = "";
+  const showTraps = state.filter === "all" && !state.q;
+  if (showTraps){
+    html += `<section id="traps" class="traps"><h2>先讀：六種出題陷阱</h2>
+      <p class="rule">錯題中反覆出現的出題手法。進考場前最後再看一次。</p>
+      ${TRAPS.map(t => `<article class="item"><p class="k">${esc(t[0])}</p><p class="a">${esc(t[1])}</p><div class="meta"><span class="num">題號 ${esc(t[2])}</span></div></article>`).join("")}
+    </section>`;
+  }
+  let shown = 0;
+  SECTIONS.forEach(s => {
+    let body = "";
+    s.groups.forEach((g, gi) => {
+      const items = ALL.filter(it => it.sec === s.id && it.id.startsWith(`${s.id}-${gi}-`) && matches(it));
+      if (!items.length) return;
+      shown += items.length;
+      body += (g.name ? `<h3>${esc(g.name)}</h3>` : "") + items.map(card).join("");
+    });
+    if (body){
+      html += `<section id="${s.id}"><h2>${esc(s.title)}<span class="subj">${s.subj}</span></h2><p class="rule">${esc(s.rule)}</p>${body}</section>`;
+    }
+  });
+  if (!shown) html += `<p class="empty">沒有符合的題目。清除搜尋，或切換到「全部」。</p>`;
+  document.getElementById("main").innerHTML = html;
+
+  const chips = (showTraps ? `<a class="trap" href="#traps">陷阱</a>` : "")
+    + SECTIONS.filter(s => document.getElementById(s.id)).map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join("");
+  document.getElementById("chips").innerHTML = chips;
+
+  const total = ALL.length, m = ALL.filter(it => mastered.has(it.id)).length;
+  document.getElementById("progText").textContent = `已熟 ${m}／${total}`;
+  document.getElementById("progFill").style.width = `${total ? m / total * 100 : 0}%`;
+}
+
+document.querySelectorAll("[data-mode]").forEach(b => b.addEventListener("click", () => {
+  state.mode = b.dataset.mode; state.revealed.clear();
+  document.querySelectorAll("[data-mode]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+}));
+document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => {
+  state.filter = b.dataset.filter;
+  document.querySelectorAll("[data-filter]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+}));
+document.querySelector(".search").addEventListener("input", e => { state.q = e.target.value.trim(); render(); });
+document.getElementById("main").addEventListener("click", e => {
+  const r = e.target.closest("[data-reveal]");
+  if (r){ state.revealed.add(r.dataset.reveal); render(); return; }
+  const m = e.target.closest("[data-master]");
+  if (m){
+    const id = m.dataset.master;
+    mastered.has(id) ? mastered.delete(id) : mastered.add(id);
+    save(); render();
+  }
+});
+render();
+</script>
+</body>
+</html>
